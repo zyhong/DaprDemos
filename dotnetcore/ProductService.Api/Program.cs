@@ -14,7 +14,10 @@ namespace ProductService.Api
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().MigrateDatabase<ProductContext>().Run();
+            CreateHostBuilder(args)
+                .Build()
+                .MigrateDatabase<ProductContext>()
+                .Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args)
@@ -22,13 +25,13 @@ namespace ProductService.Api
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.Listen(IPAddress.Loopback, 5001, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http2;
-                        });
-                    });
+                    //webBuilder.ConfigureKestrel(options =>
+                    //{
+                    //    options.Listen(IPAddress.Loopback, 5001, listenOptions =>
+                    //    {
+                    //        listenOptions.Protocols = HttpProtocols.Http2;
+                    //    });
+                    //});
                     webBuilder.UseStartup<Startup>();
                 });
         }
